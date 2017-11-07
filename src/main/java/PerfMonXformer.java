@@ -51,7 +51,7 @@ public class PerfMonXformer implements ClassFileTransformer {
       public void edit(MethodCall m) throws CannotCompileException {
         m.replace("{long stime = System.currentTimeMillis(); " +
             "$_ = $proceed($$);    " +
-            "System.out.println(\"" + m.getClassName() + "." + m.getMethodName() + ":\t\"+ (System.currentTimeMillis()-stime) +\" ms\" ); }");
+            "System.out.println( \" Thread: \"+ Thread.currentThread().getName() + \"\t\" +  \"" + m.getClassName() + "." + m.getMethodName() + ":\t\"+ (System.currentTimeMillis()-stime) +\" ms\" ); }");
       }
     });
   }
